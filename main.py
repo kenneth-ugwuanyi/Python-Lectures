@@ -1,72 +1,40 @@
-"""print("Welcome to the ultimate guessing game that will test your intelligence")
+import string
+
+print("Paasword Checker Project")
 
 print()
 
-import random
 
-correct_num = random.randint(1, 100)
+def password_checker():
+    password = input("Input your password>>>>")
+    min_length = 8
+    special_character = string.punctuation
+    upper_case = string.ascii_uppercase
+    lower_case = string.ascii_lowercase
 
-trial = 5
+    if len(password) < min_length:
+        print("Password to short, password is a minimum of 8 characters")
+        return False
+    check_special_character = any(char in special_character for char in password)
+    check_upper_case = any(char in upper_case for char in upper_case)
+    check_lower_case = any(char in lower_case for char in lower_case)
 
-def correct_guess():
-     correct_guess = int(input("please input a random number"))
+    if not check_special_character:
+        print("Invalid input your password must contain a special character")
+        return False
 
-while trial > 0:
-    select = int(input(" Please enter a random number between 1 and 100: "))
-    if select == myNumber:
-        print(" You have won the jackpot! Congratulations")
-        break
+    if not check_upper_case:
+        print("Invalid input your password must contain at least one upper-case character")
+        return False
+
+    if not check_lower_case:
+        print("Invalid input you password must contain a lower case character")
+        return False
 
     else:
-        print("Your guess is wrong try again")
-        trial -= 1
-        print(f"You have {trial} trials left")
-
-        if trial == 0:
-            print("The game is over you have exhausted your trials! please try again later")"""
-
-import random
-
-print("Welcome to the ultimate number guessing game")
-print("You have exactly five chances to win big in this game")
-
-while True:
-    right_number = random.randint(1, 100)
-    trial = 0
-
-    while trial < 5:
-        guess = int(input("Please enter a random number between 1 and 100: "))
-
-        if guess == right_number:
-            print("Congratulations! You just hit the jackpot!")
-            break
-
-        elif guess < right_number:
-            print(f"Sorry, your guess is less than the right number. You have {4 - trial} tries left.")
-            trial += 1
-
-        elif guess > right_number:
-            print(f"Sorry, your guess is higher than the right number. You have {4 - trial} trials left.")
-            trial += 1
-
-        if trial >= 5:
-            print(f"Game over! You have used the maximum of {trial} allowed. The correct answer is {right_number}.")
-            play_again = input("Enter y to start a new game, or any other key to exit: ")
-            if play_again != "y":
-                break
-                if play_again != "y":
-                    break
+        print("Correct Format please hold while i validate your input")
 
 
+print("Password Checker:\n")
 
-
-
-
-
-
-
-
-
-
-
-
+print(password_checker())
