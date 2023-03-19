@@ -1,40 +1,54 @@
+import random
 import string
 
-print("Paasword Checker Project")
 
-print()
+def generate_password():
+    # Define the length of the password
+    length = random.randint(9, 12)
 
+    # Define the characters to use for the password
+    uppercase_letters = string.ascii_uppercase
+    lowercase_letters = string.ascii_lowercase
+    special_characters = string.punctuation
 
-def password_checker():
-    password = input("Input your password>>>>")
-    min_length = 8
-    special_character = string.punctuation
-    upper_case = string.ascii_uppercase
-    lower_case = string.ascii_lowercase
+    # Create a list of all the possible characters
+    possible_characters = list(uppercase_letters + lowercase_letters + special_characters)
 
-    if len(password) < min_length:
-        print("Password to short, password is a minimum of 8 characters")
-        return False
-    check_special_character = any(char in special_character for char in password)
-    check_upper_case = any(char in upper_case for char in upper_case)
-    check_lower_case = any(char in lower_case for char in lower_case)
+    # Shuffle the list of possible characters
+    random.shuffle(possible_characters)
 
-    if not check_special_character:
-        print("Invalid input your password must contain a special character")
-        return False
+    # Pick a random character from the list until the password is the desired length
+    password = ''
+    for i in range(length):
+        password += random.choice(possible_characters)
 
-    if not check_upper_case:
-        print("Invalid input your password must contain at least one upper-case character")
-        return False
-
-    if not check_lower_case:
-        print("Invalid input you password must contain a lower case character")
-        return False
-
-    else:
-        print("Correct Format please hold while i validate your input")
+    return password
 
 
-print("Password Checker:\n")
+print(generate_password())
 
-print(password_checker())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
